@@ -1,0 +1,25 @@
+--cpu Cortex-M3
+"huiduchuanganqi\startup_stm32f103x6.o"
+"huiduchuanganqi\exti66.o"
+"huiduchuanganqi\main.o"
+"huiduchuanganqi\gpio.o"
+"huiduchuanganqi\stm32f1xx_it.o"
+"huiduchuanganqi\stm32f1xx_hal_msp.o"
+"huiduchuanganqi\stm32f1xx_hal_gpio_ex.o"
+"huiduchuanganqi\stm32f1xx_hal_tim.o"
+"huiduchuanganqi\stm32f1xx_hal_tim_ex.o"
+"huiduchuanganqi\stm32f1xx_hal.o"
+"huiduchuanganqi\stm32f1xx_hal_rcc.o"
+"huiduchuanganqi\stm32f1xx_hal_rcc_ex.o"
+"huiduchuanganqi\stm32f1xx_hal_gpio.o"
+"huiduchuanganqi\stm32f1xx_hal_dma.o"
+"huiduchuanganqi\stm32f1xx_hal_cortex.o"
+"huiduchuanganqi\stm32f1xx_hal_pwr.o"
+"huiduchuanganqi\stm32f1xx_hal_flash.o"
+"huiduchuanganqi\stm32f1xx_hal_flash_ex.o"
+"huiduchuanganqi\stm32f1xx_hal_exti.o"
+"huiduchuanganqi\system_stm32f1xx.o"
+--strict --scatter "huiduchuanganqi\huiduchuanganqi.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "huiduchuanganqi.map" -o huiduchuanganqi\huiduchuanganqi.axf
