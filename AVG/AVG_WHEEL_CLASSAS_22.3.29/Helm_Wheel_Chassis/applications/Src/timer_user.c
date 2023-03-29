@@ -33,41 +33,32 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		if(!(vtx==0&&vty==0&&vtw==0))
 		{
 		Angle_target[0]=atan2(vty-0.7071*vtw ,vtx-0.7071*vtw);
-    Angle_target[1]=atan2(vty+0.7071*vtw ,vtx+0.7071*vtw);
-		Angle_target[2]=atan2(vty-0.7071*vtw ,vtx+0.7071*vtw);
+    Angle_target[1]=atan2(vty-0.7071*vtw ,vtx+0.7071*vtw);
+		Angle_target[2]=atan2(vty+0.7071*vtw ,vtx+0.7071*vtw);
 		Angle_target[3]=atan2(vty+0.7071*vtw ,vtx-0.7071*vtw);
 		
 		for(int a=0;a<4; a++)
 		{
 			
-		 Angle_erra[a]=1.570796-Angle_target[a];
 			
-			if( (3.141593>=Angle_erra[a]) && (Angle_erra[a]>=0) )
+			
+		 Angle_erra[a]=-1.570796+Angle_target[a];
+			
+			if( (3.141593>=Angle_erra[a]) && (Angle_erra[a]>=-3.141593) )
 			{
 			
 			Angle_erra_correct[a]=Angle_erra[a];
 			
 			}
-			else if( (-3.141593<=Angle_erra[a]) && (Angle_erra[a]<0) )
-			{
 			
-			Angle_erra_correct[a]=-Angle_erra[a];
-
-			}
-			else if( (3.141593<Angle_erra[a]) && ( Angle_erra[a]<=6.283185 ) )
+			else if( (-3.141593>Angle_erra[a]) && ( Angle_erra[a]>=-6.283185 ) )
 			{
 				
-			Angle_erra_correct[a]=-6.283185+Angle_erra[a];
-			
-			}
-			else if( (-3.141593>Angle_erra[a]) && ( Angle_erra[a]>=-2*3.141593 ) )
-			{
-			
 			Angle_erra_correct[a]=6.283185+Angle_erra[a];
-				
+			
 			}
 			
-			Angle_Helm_Target[a]=Angle_erra_correct[a]*4367.18784;
+			Angle_Helm_Target[a]=Angle_erra_correct[a]*4367.18784*36;
 					
 		}
 
@@ -88,11 +79,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		
 		}
 			
-			
-
 			M2006_Target_1 = pid_call_2(Angle_Helm_Target[0],1);
-			M2006_Target_2 = pid_call_2(Angle_Helm_Target[1],2);
-			M2006_Target_3 = pid_call_2(Angle_Helm_Target[2],3);
+      M2006_Target_2 = pid_call_2(Angle_Helm_Target[1],2);
+      M2006_Target_3 = pid_call_2(Angle_Helm_Target[2],3);
 			M2006_Target_4 = pid_call_2(Angle_Helm_Target[3],4);
 
 			M3508_Target_1 = PID_velocity_realize_1(Speed_Motor_Target[0],1);
