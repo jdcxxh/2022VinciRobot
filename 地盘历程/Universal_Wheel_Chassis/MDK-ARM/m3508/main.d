@@ -39,6 +39,6 @@ m3508\main.o: ../applcations/can/struct_typedef.h
 m3508\main.o: ../applcations/can/CAN_receive.h
 m3508\main.o: ../applcations/pid/pid.h
 m3508\main.o: ../applcations/pid/pid_user.h
-m3508\main.o: ..\applcations\remote_dma\remote_control.h
-m3508\main.o: ..\bsp\remote_dma\bsp_rc.h
-m3508\main.o: ..\bsp\remote_dma\struct_typedef.h
+m3508\main.o: ../applcations/remote_dma/remote_control.h
+m3508\main.o: ../bsp/remote_dma/bsp_rc.h
+m3508\main.o: ../bsp/remote_dma/struct_typedef.h

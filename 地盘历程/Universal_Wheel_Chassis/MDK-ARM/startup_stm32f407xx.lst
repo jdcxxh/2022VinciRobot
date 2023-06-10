@@ -849,9 +849,9 @@ interwork --depend=m3508\startup_stm32f407xx.d -om3508\startup_stm32f407xx.o -I
 ARM Macro Assembler    Page 14 
 
 
-.\RTE\_m3508 -ID:\mdk503\ARM\CMSIS\5.7.0\CMSIS\Core\Include -ID:\mdk503\Keil\ST
+.\RTE\_m3508 -ID:\mdk503\ARM\CMSIS\5.9.0\CMSIS\Core\Include -ID:\mdk503\Keil\ST
 M32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include --predefine="__UVI
-SION_VERSION SETA 530" --predefine="_RTE_ SETA 1" --predefine="STM32F407xx SETA
+SION_VERSION SETA 538" --predefine="_RTE_ SETA 1" --predefine="STM32F407xx SETA
  1" --predefine="_RTE_ SETA 1" --list=startup_stm32f407xx.lst startup_stm32f407
 xx.s
 

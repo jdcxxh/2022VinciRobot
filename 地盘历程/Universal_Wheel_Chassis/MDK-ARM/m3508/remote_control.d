@@ -1,8 +1,8 @@
 m3508\remote_control.o: ..\applcations\remote_dma\remote_control.c
 m3508\remote_control.o: ..\applcations\remote_dma\remote_control.h
 m3508\remote_control.o: ../applcations/can/struct_typedef.h
-m3508\remote_control.o: ..\bsp\remote_dma\bsp_rc.h
-m3508\remote_control.o: ..\bsp\remote_dma\struct_typedef.h
+m3508\remote_control.o: ../bsp/remote_dma/bsp_rc.h
+m3508\remote_control.o: ../bsp/remote_dma/struct_typedef.h
 m3508\remote_control.o: ../Core/Inc/main.h
 m3508\remote_control.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 m3508\remote_control.o: ../Core/Inc/stm32f4xx_hal_conf.h
