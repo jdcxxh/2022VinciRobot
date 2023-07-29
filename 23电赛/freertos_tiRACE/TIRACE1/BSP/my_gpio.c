@@ -1,0 +1,15 @@
+#include "my_gpio.h"
+
+
+
+void my_gpio_init(void)
+{
+	HAL_GPIO_WritePin(GPIOF,  GPIO_PIN_12,  GPIO_PIN_RESET );  //AN2
+
+	HAL_GPIO_WritePin(GPIOF,  GPIO_PIN_11,  GPIO_PIN_RESET );//AN1
+	HAL_GPIO_WritePin(GPIOF,  GPIO_PIN_14,  GPIO_PIN_RESET );//BN1
+	HAL_GPIO_WritePin(GPIOF,  GPIO_PIN_13,  GPIO_PIN_RESET );//BN2
+	HAL_GPIO_WritePin(GPIOF,  GPIO_PIN_15,  GPIO_PIN_SET );
+HAL_GPIO_WritePin(LED_PORT,  LED,  GPIO_PIN_RESET );
+}
+
