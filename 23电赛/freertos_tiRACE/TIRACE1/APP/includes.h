@@ -13,7 +13,7 @@
 #include  "stdio.h"
 #include "my_usart.h"
 #include "pid_user.h"
-
+#include "my_iic.h"
 //#include "pid_user.h"
 
 //PE0 LED

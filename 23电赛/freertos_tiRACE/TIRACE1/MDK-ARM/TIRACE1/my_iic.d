@@ -47,4 +47,9 @@ tirace1\my_iic.o: ../BSP/my_usart.h
 tirace1\my_iic.o: ../Core/Inc/usart.h
 tirace1\my_iic.o: ../APP/pid_user.h
 tirace1\my_iic.o: ../APP/pid.h
+tirace1\my_iic.o: ../BSP/my_iic.h
 tirace1\my_iic.o: ../Core/Inc/i2c.h
+tirace1\my_iic.o: ..\APP\U8G2\u8g2.h
+tirace1\my_iic.o: ..\APP\U8G2\u8x8.h
+tirace1\my_iic.o: D:\mdk503\ARM\ARMCC\Bin\..\include\stdarg.h
+tirace1\my_iic.o: D:\mdk503\ARM\ARMCC\Bin\..\include\limits.h

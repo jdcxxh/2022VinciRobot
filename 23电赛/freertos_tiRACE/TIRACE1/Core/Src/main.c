@@ -106,8 +106,8 @@ int main(void)
 	HAL_TIM_Base_Start_IT(&htim9);//测速的定时器
   motor_init( &MOTOR[0], htim1);
 	motor_init( &MOTOR[1], htim8);
-PID_devices_Init( );
-
+  PID_devices_Init( );
+u8g2_init();
   /* USER CODE END 2 */
 
   /* Init scheduler */

@@ -1,0 +1,10 @@
+tirace1\mui_u8g2.o: ..\APP\U8G2\mui_u8g2.c
+tirace1\mui_u8g2.o: ..\APP\U8G2\mui.h
+tirace1\mui_u8g2.o: D:\mdk503\ARM\ARMCC\Bin\..\include\stddef.h
+tirace1\mui_u8g2.o: D:\mdk503\ARM\ARMCC\Bin\..\include\stdint.h
+tirace1\mui_u8g2.o: D:\mdk503\ARM\ARMCC\Bin\..\include\string.h
+tirace1\mui_u8g2.o: ..\APP\U8G2\u8g2.h
+tirace1\mui_u8g2.o: ..\APP\U8G2\u8x8.h
+tirace1\mui_u8g2.o: D:\mdk503\ARM\ARMCC\Bin\..\include\stdarg.h
+tirace1\mui_u8g2.o: D:\mdk503\ARM\ARMCC\Bin\..\include\limits.h
+tirace1\mui_u8g2.o: ..\APP\U8G2\mui_u8g2.h
