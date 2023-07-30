@@ -8,7 +8,7 @@ pid_type_def pid_p_1[2];
 
 
 fp32 motor_postion_motor_pid[3] = {5,0,0 };//
-fp32 motor_speed_motor_pid[3] = {85, 0.46, 8};//
+fp32 motor_speed_motor_pid[3] = {40, 0,0};//
 //85   0.5   5
 
 

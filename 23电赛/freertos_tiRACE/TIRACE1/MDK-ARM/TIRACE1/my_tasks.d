@@ -49,8 +49,8 @@ tirace1\my_tasks.o: ../APP/pid_user.h
 tirace1\my_tasks.o: ../APP/pid.h
 tirace1\my_tasks.o: ../BSP/my_iic.h
 tirace1\my_tasks.o: ../Core/Inc/i2c.h
-tirace1\my_tasks.o: ..\APP\U8G2\u8g2.h
-tirace1\my_tasks.o: ..\APP\U8G2\u8x8.h
+tirace1\my_tasks.o: ../APP/U8G2/u8g2.h
+tirace1\my_tasks.o: ../APP/U8G2/u8x8.h
 tirace1\my_tasks.o: D:\mdk503\ARM\ARMCC\Bin\..\include\stdarg.h
 tirace1\my_tasks.o: D:\mdk503\ARM\ARMCC\Bin\..\include\limits.h
 tirace1\my_tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h

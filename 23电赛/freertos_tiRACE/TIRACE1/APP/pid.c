@@ -43,6 +43,7 @@ float PID_calc(pid_type_def *pid, float ref, float set)
     pid->set = set;
     pid->fdb = ref;
     pid->error[0] = set - ref;
+	
     if (pid->mode == PID_POSITION)
     {
         pid->Pout = pid->Kp * pid->error[0];

@@ -68,6 +68,13 @@ const osThreadAttr_t chassis_Move_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
+/* Definitions for oled */
+osThreadId_t oledHandle;
+const osThreadAttr_t oled_attributes = {
+  .name = "oled",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -77,6 +84,7 @@ const osThreadAttr_t chassis_Move_attributes = {
 void StartDefaultTask(void *argument);
 extern void led_blink_Task(void *argument);
 extern void chassis_Move_Task(void *argument);
+extern void oled_task(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -115,6 +123,9 @@ void MX_FREERTOS_Init(void) {
 
   /* creation of chassis_Move */
   chassis_MoveHandle = osThreadNew(chassis_Move_Task, NULL, &chassis_Move_attributes);
+
+  /* creation of oled */
+  oledHandle = osThreadNew(oled_task, NULL, &oled_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */

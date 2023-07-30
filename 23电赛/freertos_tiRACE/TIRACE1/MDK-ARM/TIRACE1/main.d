@@ -49,8 +49,8 @@ tirace1\main.o: ../APP/pid_user.h
 tirace1\main.o: ../APP/pid.h
 tirace1\main.o: ../BSP/my_iic.h
 tirace1\main.o: ../Core/Inc/i2c.h
-tirace1\main.o: ..\APP\U8G2\u8g2.h
-tirace1\main.o: ..\APP\U8G2\u8x8.h
+tirace1\main.o: ../APP/U8G2/u8g2.h
+tirace1\main.o: ../APP/U8G2/u8x8.h
 tirace1\main.o: D:\mdk503\ARM\ARMCC\Bin\..\include\stdarg.h
 tirace1\main.o: D:\mdk503\ARM\ARMCC\Bin\..\include\limits.h
 tirace1\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h
