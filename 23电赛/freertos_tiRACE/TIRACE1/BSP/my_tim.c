@@ -18,10 +18,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
  if(htim->Instance==htim9.Instance)		 
  {
- 	speed_Encoder(&MOTOR[0]);
  	speed_Encoder(&MOTOR[1]);
  
  
+ 	speed_Encoder(&MOTOR[0]);
  
  }
 	

@@ -26,7 +26,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+extern uint16_t USART_RX_STA;       //接收状态标记	
 
+extern uint8_t aRxBuffer[RXBUFFERSIZE];//HAL库使用的串口接收缓冲
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -98,6 +100,7 @@ int main(void)
   MX_TIM1_Init();
   MX_TIM8_Init();
   MX_TIM9_Init();
+  MX_UART5_Init();
   /* USER CODE BEGIN 2 */
   my_tim_init();
   my_gpio_init();
@@ -107,7 +110,12 @@ int main(void)
   motor_init( &MOTOR[0], htim1);
 	motor_init( &MOTOR[1], htim8);
   PID_devices_Init( );
-u8g2_init();
+  u8g2_init();
+
+  HAL_UART_Receive_IT(&huart5, (uint8_t *)aRxBuffer, RXBUFFERSIZE);//该函数会开启接收中断：标志位UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
+
+//  
+
   /* USER CODE END 2 */
 
   /* Init scheduler */

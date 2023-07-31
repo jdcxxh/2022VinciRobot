@@ -26,3 +26,13 @@ PF12                 AN2
 
 PF13				BN2
 PF14                 BN1
+
+PF0-PF7
+
+
+
+PC12 
+PD2              USART5  rx
+
+
+

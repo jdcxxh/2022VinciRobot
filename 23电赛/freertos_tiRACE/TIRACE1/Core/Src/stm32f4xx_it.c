@@ -28,7 +28,9 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
+extern uint16_t USART_RX_STA;       //接收状态标记	
 
+extern uint8_t aRxBuffer[RXBUFFERSIZE];//HAL库使用的串口接收缓冲
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
@@ -61,6 +63,7 @@ extern TIM_HandleTypeDef htim1;
 extern TIM_HandleTypeDef htim8;
 extern TIM_HandleTypeDef htim9;
 extern UART_HandleTypeDef huart4;
+extern UART_HandleTypeDef huart5;
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -240,6 +243,42 @@ void UART4_IRQHandler(void)
   /* USER CODE BEGIN UART4_IRQn 1 */
 
   /* USER CODE END UART4_IRQn 1 */
+}
+
+/**
+  * @brief This function handles UART5 global interrupt.
+  */
+void UART5_IRQHandler(void)
+{
+  /* USER CODE BEGIN UART5_IRQn 0 */
+uint32_t timeout=0;
+	
+	
+	
+	
+	
+	
+	
+	
+  /* USER CODE END UART5_IRQn 0 */
+  HAL_UART_IRQHandler(&huart5);
+  /* USER CODE BEGIN UART5_IRQn 1 */
+	
+	timeout=0;
+    while (HAL_UART_GetState(&huart5) != HAL_UART_STATE_READY)//等待就绪
+	{
+	 timeout++;////超时处理
+     if(timeout>HAL_MAX_DELAY) break;		
+	
+	}
+     
+	timeout=0;
+	while(HAL_UART_Receive_IT(&huart5, (uint8_t *)aRxBuffer, RXBUFFERSIZE) != HAL_OK)//一次处理完成之后，重新开启中断并设置RxXferCount为1
+	{
+	 timeout++; //超时处理
+	 if(timeout>HAL_MAX_DELAY) break;	
+	}
+  /* USER CODE END UART5_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */

@@ -75,6 +75,13 @@ const osThreadAttr_t oled_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
+/* Definitions for find_road */
+osThreadId_t find_roadHandle;
+const osThreadAttr_t find_road_attributes = {
+  .name = "find_road",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -85,6 +92,7 @@ void StartDefaultTask(void *argument);
 extern void led_blink_Task(void *argument);
 extern void chassis_Move_Task(void *argument);
 extern void oled_task(void *argument);
+extern void find_road_task(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -126,6 +134,9 @@ void MX_FREERTOS_Init(void) {
 
   /* creation of oled */
   oledHandle = osThreadNew(oled_task, NULL, &oled_attributes);
+
+  /* creation of find_road */
+  find_roadHandle = osThreadNew(find_road_task, NULL, &find_road_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */

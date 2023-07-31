@@ -1,4 +1,10 @@
 #include "my_usart.h"
+uint16_t USART_RX_STA=0;       //接收状态标记	
+
+uint8_t aRxBuffer[RXBUFFERSIZE];//HAL库使用的串口接收缓冲
+
+ uint8_t USART_RX_BUF[USART_REC_LEN];     //接收缓冲,最大USART_REC_LEN个字节.
+ 
 /*************Printf重定向UART**************/
 /*用途：
 *使用printf将打印内容通过串口发送。 
@@ -11,9 +17,7 @@
 *建议使用CubeMX生成的代码，这样直接修改huart1后面的标号即可直接使用
 ******************************************/
 ///////////////////////////////////////////////////////////要在魔术棒里打开微库
- 
- 
- 
+
 /*****************  发送字符串（重新定向） **********************/
 void Usart_SendString(uint8_t *str)
 {
@@ -41,4 +45,63 @@ int fgetc(FILE *f)
     int ch;
     HAL_UART_Receive(&huart4, (uint8_t *)&ch, 1, 1000);    
     return (ch);
+}
+
+
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	#if find_road_moda
+	if(huart->Instance==UART5)//如果是串口1
+	{
+		if((USART_RX_STA&0x8000)==0)//接收未完成
+		{
+			if(USART_RX_STA&0x4000)//接收到了0x0d
+			{
+				if(aRxBuffer[0]!=0x0a)USART_RX_STA=0;//接收错误,重新开始
+				else USART_RX_STA|=0x8000;	//接收完成了 
+			}
+			else //还没收到0X0D
+			{	
+				if(aRxBuffer[0]==0x0d)USART_RX_STA|=0x4000;
+				else
+				{
+					USART_RX_BUF[USART_RX_STA&0X3FFF]=aRxBuffer[0] ;
+					USART_RX_STA++;
+					if(USART_RX_STA>(USART_REC_LEN-1))USART_RX_STA=0;//接收数据错误,重新开始接收	  
+				}		 
+			}
+		}
+
+	}
+	#endif
+}
+
+
+
+#include "stdint.h"
+ 
+int32_t  Output=0;
+void str2int(uint8_t* str, char flag, int32_t no, int32_t* Output)
+{
+	int32_t id_end, count, output;
+	for (id_end = 0, count = 0; count != no; ++id_end)
+	{
+		if (str[id_end] == flag || str[id_end] == '\r' || str[id_end] == '\n' || str[id_end] == '\0')
+			++count;
+	}
+	id_end -= 2;
+	for (output = 0, count = 1; str[id_end] != flag && id_end >= 0; --id_end)
+	{
+		if (str[id_end] == '-')
+			output *= -1;
+		else if (str[id_end] == '+')
+			;
+		else
+		{
+			output += (str[id_end] - '0') * count;
+			count *= 10;
+		}
+	}
+	*Output = output;
 }
